@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class MVVMViewController: UIViewController {
     @IBOutlet private var labels: [UILabel]! {
@@ -24,15 +26,19 @@ final class MVVMViewController: UIViewController {
     @IBOutlet private weak var upButton: UIButton!
     @IBOutlet private weak var downButton: UIButton!
 
-    private lazy var viewModel = CounterViewModel(numberOfPlaceValues: self.labels.count)
+    private let disposeBag = DisposeBag()
+    private lazy var viewModel = CounterViewModel(numberOfPlaceValues: self.labels.count,
+                                                  incrementButtonTap: self.incrementButton.rx.tap.asObservable(),
+                                                  upButtonTap: self.upButton.rx.tap.asObservable(),
+                                                  downButtonTap: self.downButton.rx.tap.asObservable())
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        upButton.addTarget(viewModel, action: #selector(CounterViewModel.incrementEachPlaceValues), for: .touchUpInside)
-        downButton.addTarget(viewModel, action: #selector(CounterViewModel.decrementEachPlaceValues), for: .touchUpInside)
-        incrementButton.addTarget(viewModel, action: #selector(CounterViewModel.increment), for: .touchUpInside)
-
-        labels.enumerated().forEach { viewModel.observePlaceValues(at: $0.offset, bindTo: $0.element, \.text) }
+        viewModel.placeValues
+            .bind(to: Binder(self) { me, values in
+                values.enumerated().forEach { me.labels[$0.0].text = $0.1 }
+            })
+            .disposed(by: disposeBag)
     }
 }
