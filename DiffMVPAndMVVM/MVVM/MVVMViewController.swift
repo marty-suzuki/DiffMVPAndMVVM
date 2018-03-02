@@ -37,7 +37,7 @@ final class MVVMViewController: UIViewController {
 
         viewModel.placeValues
             .bind(to: Binder(self) { me, values in
-                values.enumerated().forEach { me.labels[$0.0].text = $0.1 }
+                values.enumerated().forEach { me.labels[$0].text = $1 }
             })
             .disposed(by: disposeBag)
     }
