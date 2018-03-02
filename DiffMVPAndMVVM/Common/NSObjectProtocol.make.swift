@@ -10,6 +10,10 @@ import UIKit
 
 extension NSObjectProtocol where Self: UIViewController {
     static func makeFromNib() -> Self {
-        return Self(nibName: String(describing: self), bundle: nil)
+        let nibName = String(describing: self)
+        let vc = Self(nibName: nibName, bundle: nil)
+        vc.navigationItem.title = nibName
+        vc.tabBarItem = UITabBarItem(title: nibName, image: nil, selectedImage: nil)
+        return vc
     }
 }

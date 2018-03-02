@@ -1,25 +1,36 @@
 //
-//  CounterViewModel.swift
+//  CounterPresenter.swift
 //  DiffMVPAndMVVM
 //
-//  Created by marty-suzuki on 2018/03/02.
+//  Created by 鈴木大貴 on 2018/03/02.
 //  Copyright © 2018年 marty-suzuki. All rights reserved.
 //
 
 import RxSwift
 import RxCocoa
 
-final class CounterViewModel {
-    let placeValues: Observable<[String]>
+final class CounterPresenter {
+    private weak var view: CounterView?
+
+    private let _incrementButtonTap = PublishRelay<Void>()
+    private let _upButtonTap = PublishRelay<Void>()
+    private let _downButtonTap = PublishRelay<Void>()
 
     private let disposeBag = DisposeBag()
 
-    init(numberOfPlaceValues: Int,
-         incrementButtonTap: Observable<Void>,
-         upButtonTap: Observable<Void>,
-         downButtonTap: Observable<Void>) {
+    init(numberOfPlaceValues: Int, view: CounterView) {
+        self.view = view
+        
         let _placeValues = PublishRelay<[Int]>()
-        self.placeValues = _placeValues.map { $0.map { "\($0)" } }
+        _placeValues
+            .map { $0.map { "\($0)" } }
+            .observeOn(ConcurrentMainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                $0.enumerated().forEach {
+                    self?.view?.updateLabel(at: $0, text: $1)
+                }
+            })
+            .disposed(by: disposeBag)
 
         let _count = PublishRelay<Int>()
         _count
@@ -35,7 +46,7 @@ final class CounterViewModel {
             .bind(to: _placeValues)
             .disposed(by: disposeBag)
 
-        let newPlaceValues1 = upButtonTap
+        let newPlaceValues1 = _upButtonTap
             .withLatestFrom(_placeValues)
             .map { values -> [Int] in
                 let maxValue = values.reduce(0, max)
@@ -52,9 +63,9 @@ final class CounterViewModel {
                         value == minValue ? value + 1 : value
                     }
                 }
-            }
+        }
 
-        let newPlaceValues2 = downButtonTap
+        let newPlaceValues2 = _downButtonTap
             .withLatestFrom(_placeValues)
             .map { values -> [Int] in
                 let maxValue = values.reduce(0, max)
@@ -71,7 +82,7 @@ final class CounterViewModel {
                         value == maxValue ? value - 1 : value
                     }
                 }
-            }
+        }
 
         Observable.merge(newPlaceValues1, newPlaceValues2)
             .map { values -> Int in
@@ -84,7 +95,7 @@ final class CounterViewModel {
 
         let placeValues = (0..<numberOfPlaceValues).map { _ in 0 }
         let maxValue = (Int(pow(Double(10), Double(placeValues.count + 1))) - 1)
-        incrementButtonTap
+        _incrementButtonTap
             .withLatestFrom(_count)
             .map { $0 + 1 }
             .filter { $0 <= maxValue }
@@ -93,5 +104,17 @@ final class CounterViewModel {
 
         _placeValues.accept(placeValues)
         _count.accept(0)
+    }
+
+    @objc func incrementButtonTap() {
+        _incrementButtonTap.accept(())
+    }
+
+    @objc func upButtonTap() {
+        _upButtonTap.accept(())
+    }
+
+    @objc func downButtonTap() {
+        _downButtonTap.accept(())
     }
 }

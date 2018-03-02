@@ -17,7 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let window = UIWindow(frame: UIScreen.main.bounds)
         let tabController = UITabBarController()
-        tabController.setViewControllers([MVVMViewController.makeFromNib()], animated: false)
+        let viewControllers: [UIViewController] = [
+            MVPViewController.makeFromNib(),
+            MVVMViewController.makeFromNib()
+        ]
+        tabController.setViewControllers(viewControllers, animated: false)
         window.rootViewController = tabController
         window.makeKeyAndVisible()
         self.window = window
