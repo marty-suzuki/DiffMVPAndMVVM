@@ -17,6 +17,8 @@
 		371F4512204857C000EDB6CC /* MVVMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371F4510204857C000EDB6CC /* MVVMViewController.xib */; };
 		371F45142048587500EDB6CC /* CounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F45132048587500EDB6CC /* CounterViewModel.swift */; };
 		371F45172048599D00EDB6CC /* NSObjectProtocol.className.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F45162048599D00EDB6CC /* NSObjectProtocol.className.swift */; };
+		37D24E3E20714A1B00783869 /* MVPViewControllerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D24E3D20714A1B00783869 /* MVPViewControllerTestCase.swift */; };
+		37D24E4020714CAF00783869 /* CounterPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D24E3F20714CAF00783869 /* CounterPresenterTestCase.swift */; };
 		ED03FD852048FFA10084D73B /* MVPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED03FD832048FFA10084D73B /* MVPViewController.swift */; };
 		ED03FD862048FFA10084D73B /* MVPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED03FD842048FFA10084D73B /* MVPViewController.xib */; };
 		ED03FD882049002E0084D73B /* CounterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED03FD872049002E0084D73B /* CounterPresenter.swift */; };
@@ -47,6 +49,8 @@
 		371F4510204857C000EDB6CC /* MVVMViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MVVMViewController.xib; sourceTree = "<group>"; };
 		371F45132048587500EDB6CC /* CounterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewModel.swift; sourceTree = "<group>"; };
 		371F45162048599D00EDB6CC /* NSObjectProtocol.className.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectProtocol.className.swift; sourceTree = "<group>"; };
+		37D24E3D20714A1B00783869 /* MVPViewControllerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPViewControllerTestCase.swift; sourceTree = "<group>"; };
+		37D24E3F20714CAF00783869 /* CounterPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterPresenterTestCase.swift; sourceTree = "<group>"; };
 		ED03FD832048FFA10084D73B /* MVPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPViewController.swift; sourceTree = "<group>"; };
 		ED03FD842048FFA10084D73B /* MVPViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MVPViewController.xib; sourceTree = "<group>"; };
 		ED03FD872049002E0084D73B /* CounterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterPresenter.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 		371F44FC2048565400EDB6CC /* DiffMVPAndMVVMTests */ = {
 			isa = PBXGroup;
 			children = (
+				37D24E3A2071497A00783869 /* MVVM */,
+				37D24E392071497400783869 /* MVP */,
 				371F44FD2048565400EDB6CC /* DiffMVPAndMVVMTests.swift */,
 				371F44FF2048565400EDB6CC /* Info.plist */,
 			);
@@ -139,6 +145,22 @@
 				371F45162048599D00EDB6CC /* NSObjectProtocol.className.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		37D24E392071497400783869 /* MVP */ = {
+			isa = PBXGroup;
+			children = (
+				37D24E3D20714A1B00783869 /* MVPViewControllerTestCase.swift */,
+				37D24E3F20714CAF00783869 /* CounterPresenterTestCase.swift */,
+			);
+			path = MVP;
+			sourceTree = "<group>";
+		};
+		37D24E3A2071497A00783869 /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MVVM;
 			sourceTree = "<group>";
 		};
 		ED03FD822048FF830084D73B /* MVP */ = {
@@ -288,6 +310,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				371F44FE2048565400EDB6CC /* DiffMVPAndMVVMTests.swift in Sources */,
+				37D24E4020714CAF00783869 /* CounterPresenterTestCase.swift in Sources */,
+				37D24E3E20714A1B00783869 /* MVPViewControllerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

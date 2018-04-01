@@ -30,6 +30,7 @@ final class CounterPresenter: CounterPresenterType {
         do { // This part is different from implementation of ConunterViewModel.
             self.view = view
             _placeValues
+                .skip(1)
                 .map { $0.map { "\($0)" } }
                 .bind(to: Binder(self) { me, values in
                     values.enumerated().forEach {
