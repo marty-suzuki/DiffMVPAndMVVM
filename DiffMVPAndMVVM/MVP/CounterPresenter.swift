@@ -9,7 +9,13 @@
 import RxSwift
 import RxCocoa
 
-final class CounterPresenter {
+@objc protocol CounterPresenterType: class {
+    @objc func incrementButtonTap()
+    @objc func upButtonTap()
+    @objc func downButtonTap()
+}
+
+final class CounterPresenter: CounterPresenterType {
     private weak var view: CounterView?
 
     private let _incrementButtonTap = PublishRelay<Void>()

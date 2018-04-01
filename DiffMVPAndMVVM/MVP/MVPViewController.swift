@@ -13,7 +13,7 @@ protocol CounterView: class {
 }
 
 final class MVPViewController: UIViewController, CounterView {
-    @IBOutlet private var labels: [UILabel]! {
+    @IBOutlet private(set) var labels: [UILabel]! {
         didSet {
             labels.forEach { label in
                 label.layer.cornerRadius = 4
@@ -28,8 +28,21 @@ final class MVPViewController: UIViewController, CounterView {
     @IBOutlet private weak var upButton: UIButton!
     @IBOutlet private weak var downButton: UIButton!
 
-    private lazy var presenter = CounterPresenter(numberOfPlaceValues: self.labels.count,
-                                                  view: self)
+    private lazy var presenter: CounterPresenterType = {
+        CounterPresenter(numberOfPlaceValues: self.labels.count,
+                         view: self)
+    }()
+
+    init(presenter: CounterPresenterType? = nil) {
+        super.init(nibName: MVPViewController.className, bundle: nil)
+        if let presenter = presenter {
+            self.presenter = presenter
+        }
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

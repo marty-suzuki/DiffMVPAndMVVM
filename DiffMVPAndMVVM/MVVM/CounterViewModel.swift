@@ -9,7 +9,11 @@
 import RxSwift
 import RxCocoa
 
-final class CounterViewModel {
+protocol CounterViewModelType: class {
+    var placeValues: Observable<[String]> { get }
+}
+
+final class CounterViewModel: CounterViewModelType {
     let placeValues: Observable<[String]>
 
     private let disposeBag = DisposeBag()
