@@ -19,6 +19,10 @@
 		371F45172048599D00EDB6CC /* NSObjectProtocol.className.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F45162048599D00EDB6CC /* NSObjectProtocol.className.swift */; };
 		37D24E3E20714A1B00783869 /* MVPViewControllerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D24E3D20714A1B00783869 /* MVPViewControllerTestCase.swift */; };
 		37D24E4020714CAF00783869 /* CounterPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D24E3F20714CAF00783869 /* CounterPresenterTestCase.swift */; };
+		37D24E42207153EC00783869 /* MVVMViewControllerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D24E41207153EC00783869 /* MVVMViewControllerTestCase.swift */; };
+		37D24E44207153FE00783869 /* CounterViewModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D24E43207153FE00783869 /* CounterViewModelTestCase.swift */; };
+		37D24E452071546D00783869 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371F45092048568000EDB6CC /* RxCocoa.framework */; };
+		37D24E462071546D00783869 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371F450A2048568000EDB6CC /* RxSwift.framework */; };
 		ED03FD852048FFA10084D73B /* MVPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED03FD832048FFA10084D73B /* MVPViewController.swift */; };
 		ED03FD862048FFA10084D73B /* MVPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED03FD842048FFA10084D73B /* MVPViewController.xib */; };
 		ED03FD882049002E0084D73B /* CounterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED03FD872049002E0084D73B /* CounterPresenter.swift */; };
@@ -51,6 +55,8 @@
 		371F45162048599D00EDB6CC /* NSObjectProtocol.className.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectProtocol.className.swift; sourceTree = "<group>"; };
 		37D24E3D20714A1B00783869 /* MVPViewControllerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPViewControllerTestCase.swift; sourceTree = "<group>"; };
 		37D24E3F20714CAF00783869 /* CounterPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterPresenterTestCase.swift; sourceTree = "<group>"; };
+		37D24E41207153EC00783869 /* MVVMViewControllerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMViewControllerTestCase.swift; sourceTree = "<group>"; };
+		37D24E43207153FE00783869 /* CounterViewModelTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewModelTestCase.swift; sourceTree = "<group>"; };
 		ED03FD832048FFA10084D73B /* MVPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPViewController.swift; sourceTree = "<group>"; };
 		ED03FD842048FFA10084D73B /* MVPViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MVPViewController.xib; sourceTree = "<group>"; };
 		ED03FD872049002E0084D73B /* CounterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterPresenter.swift; sourceTree = "<group>"; };
@@ -70,6 +76,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37D24E452071546D00783869 /* RxCocoa.framework in Frameworks */,
+				37D24E462071546D00783869 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +167,8 @@
 		37D24E3A2071497A00783869 /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				37D24E41207153EC00783869 /* MVVMViewControllerTestCase.swift */,
+				37D24E43207153FE00783869 /* CounterViewModelTestCase.swift */,
 			);
 			path = MVVM;
 			sourceTree = "<group>";
@@ -309,7 +319,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37D24E42207153EC00783869 /* MVVMViewControllerTestCase.swift in Sources */,
 				371F44FE2048565400EDB6CC /* DiffMVPAndMVVMTests.swift in Sources */,
+				37D24E44207153FE00783869 /* CounterViewModelTestCase.swift in Sources */,
 				37D24E4020714CAF00783869 /* CounterPresenterTestCase.swift in Sources */,
 				37D24E3E20714A1B00783869 /* MVPViewControllerTestCase.swift in Sources */,
 			);
@@ -492,6 +504,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DiffMVPAndMVVMTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.DiffMVPAndMVVMTests";
@@ -508,6 +524,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DiffMVPAndMVVMTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.DiffMVPAndMVVMTests";

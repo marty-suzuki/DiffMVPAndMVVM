@@ -25,7 +25,14 @@ final class CounterViewModel: CounterViewModelType {
         let _placeValues = PublishRelay<[Int]>()
 
         do { // This part is different from implementation of ConunterPresenter.
-            self.placeValues = _placeValues
+            let value = BehaviorRelay<[Int]>(value: [])
+            _placeValues
+                .skip(1)
+                .bind(to: value)
+                .disposed(by: disposeBag)
+
+            self.placeValues = value
+                .filter { !$0.isEmpty }
                 .map { $0.map { "\($0)" } }
         }
 
