@@ -10,7 +10,6 @@
 		371F44E92048565400EDB6CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F44E82048565400EDB6CC /* AppDelegate.swift */; };
 		371F44F02048565400EDB6CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 371F44EF2048565400EDB6CC /* Assets.xcassets */; };
 		371F44F32048565400EDB6CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 371F44F12048565400EDB6CC /* LaunchScreen.storyboard */; };
-		371F44FE2048565400EDB6CC /* DiffMVPAndMVVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F44FD2048565400EDB6CC /* DiffMVPAndMVVMTests.swift */; };
 		371F450B2048568000EDB6CC /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371F45092048568000EDB6CC /* RxCocoa.framework */; };
 		371F450C2048568000EDB6CC /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371F450A2048568000EDB6CC /* RxSwift.framework */; };
 		371F4511204857C000EDB6CC /* MVVMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F450F204857C000EDB6CC /* MVVMViewController.swift */; };
@@ -45,7 +44,6 @@
 		371F44F22048565400EDB6CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		371F44F42048565400EDB6CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		371F44F92048565400EDB6CC /* DiffMVPAndMVVMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiffMVPAndMVVMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		371F44FD2048565400EDB6CC /* DiffMVPAndMVVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffMVPAndMVVMTests.swift; sourceTree = "<group>"; };
 		371F44FF2048565400EDB6CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		371F45092048568000EDB6CC /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		371F450A2048568000EDB6CC /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 			children = (
 				37D24E3A2071497A00783869 /* MVVM */,
 				37D24E392071497400783869 /* MVP */,
-				371F44FD2048565400EDB6CC /* DiffMVPAndMVVMTests.swift */,
 				371F44FF2048565400EDB6CC /* Info.plist */,
 			);
 			path = DiffMVPAndMVVMTests;
@@ -320,7 +317,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				37D24E42207153EC00783869 /* MVVMViewControllerTestCase.swift in Sources */,
-				371F44FE2048565400EDB6CC /* DiffMVPAndMVVMTests.swift in Sources */,
 				37D24E44207153FE00783869 /* CounterViewModelTestCase.swift in Sources */,
 				37D24E4020714CAF00783869 /* CounterPresenterTestCase.swift in Sources */,
 				37D24E3E20714A1B00783869 /* MVPViewControllerTestCase.swift in Sources */,
