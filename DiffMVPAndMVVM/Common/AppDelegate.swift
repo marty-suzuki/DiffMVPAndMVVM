@@ -18,13 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         let tabController = UITabBarController()
         let viewControllers: [UIViewController] = [
-            MVPViewController(),
-            MVVMViewController()
+            MVPViewController<CounterPresenter>(),
+            MVVMViewController<CounterViewModel>()
         ]
         viewControllers.forEach {
-            let title = type(of: $0).className
-            $0.navigationItem.title = title
-            $0.tabBarItem = UITabBarItem(title: title, image: nil, selectedImage: nil)
+            if let title = $0.title {
+                $0.navigationItem.title = $0.title
+                $0.tabBarItem = UITabBarItem(title: title, image: nil, selectedImage: nil)
+            }
         }
         tabController.setViewControllers(viewControllers, animated: false)
         window.rootViewController = tabController

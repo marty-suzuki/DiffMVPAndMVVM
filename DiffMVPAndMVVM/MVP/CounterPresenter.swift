@@ -10,9 +10,10 @@ import RxSwift
 import RxCocoa
 
 @objc protocol CounterPresenterType: class {
-    @objc func incrementButtonTap()
-    @objc func upButtonTap()
-    @objc func downButtonTap()
+    init(numberOfPlaceValues: Int, view: CounterView)
+    func incrementButtonTap()
+    func upButtonTap()
+    func downButtonTap()
 }
 
 final class CounterPresenter: CounterPresenterType {
@@ -116,15 +117,15 @@ final class CounterPresenter: CounterPresenterType {
         }
     }
 
-    @objc func incrementButtonTap() {
+    func incrementButtonTap() {
         _incrementButtonTap.accept(())
     }
 
-    @objc func upButtonTap() {
+    func upButtonTap() {
         _upButtonTap.accept(())
     }
 
-    @objc func downButtonTap() {
+    func downButtonTap() {
         _downButtonTap.accept(())
     }
 }

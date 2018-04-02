@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol CounterView: class {
+@objc protocol CounterView: class {
     func updateLabel(at index: Int, text: String)
 }
 
-final class MVPViewController: UIViewController, CounterView {
+final class MVPViewController<Presenter: CounterPresenterType>: UIViewController, CounterView {
     @IBOutlet private(set) var labels: [UILabel]! {
         didSet {
             labels.forEach { label in
@@ -24,26 +24,22 @@ final class MVPViewController: UIViewController, CounterView {
             }
         }
     }
-    @IBOutlet private weak var incrementButton: UIButton!
-    @IBOutlet private weak var upButton: UIButton!
-    @IBOutlet private weak var downButton: UIButton!
+    @IBOutlet private(set) weak var incrementButton: UIButton!
+    @IBOutlet private(set) weak var upButton: UIButton!
+    @IBOutlet private(set) weak var downButton: UIButton!
 
-    private lazy var presenter: CounterPresenterType = {
-        CounterPresenter(numberOfPlaceValues: self.labels.count,
-                         view: self)
-    }()
+    private(set) lazy var presenter = Presenter(numberOfPlaceValues: self.labels.count, view: self)
 
-    init(presenter: CounterPresenterType? = nil) {
-        super.init(nibName: MVPViewController.className, bundle: nil)
-        if let presenter = presenter {
-            self.presenter = presenter
-        }
+    init() {
+        let nibName = "MVPViewController"
+        super.init(nibName: nibName, bundle: nil)
+        self.title = nibName
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

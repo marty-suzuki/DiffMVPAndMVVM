@@ -11,6 +11,10 @@ import RxCocoa
 
 protocol CounterViewModelType: class {
     var placeValues: Observable<[String]> { get }
+    init(numberOfPlaceValues: Int,
+         incrementButtonTap: Observable<Void>,
+         upButtonTap: Observable<Void>,
+         downButtonTap: Observable<Void>)
 }
 
 final class CounterViewModel: CounterViewModelType {

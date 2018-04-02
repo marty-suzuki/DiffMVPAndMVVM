@@ -15,7 +15,6 @@
 		371F4511204857C000EDB6CC /* MVVMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F450F204857C000EDB6CC /* MVVMViewController.swift */; };
 		371F4512204857C000EDB6CC /* MVVMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371F4510204857C000EDB6CC /* MVVMViewController.xib */; };
 		371F45142048587500EDB6CC /* CounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F45132048587500EDB6CC /* CounterViewModel.swift */; };
-		371F45172048599D00EDB6CC /* NSObjectProtocol.className.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F45162048599D00EDB6CC /* NSObjectProtocol.className.swift */; };
 		37D24E3E20714A1B00783869 /* MVPViewControllerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D24E3D20714A1B00783869 /* MVPViewControllerTestCase.swift */; };
 		37D24E4020714CAF00783869 /* CounterPresenterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D24E3F20714CAF00783869 /* CounterPresenterTestCase.swift */; };
 		37D24E42207153EC00783869 /* MVVMViewControllerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D24E41207153EC00783869 /* MVVMViewControllerTestCase.swift */; };
@@ -50,7 +49,6 @@
 		371F450F204857C000EDB6CC /* MVVMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMViewController.swift; sourceTree = "<group>"; };
 		371F4510204857C000EDB6CC /* MVVMViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MVVMViewController.xib; sourceTree = "<group>"; };
 		371F45132048587500EDB6CC /* CounterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewModel.swift; sourceTree = "<group>"; };
-		371F45162048599D00EDB6CC /* NSObjectProtocol.className.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectProtocol.className.swift; sourceTree = "<group>"; };
 		37D24E3D20714A1B00783869 /* MVPViewControllerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPViewControllerTestCase.swift; sourceTree = "<group>"; };
 		37D24E3F20714CAF00783869 /* CounterPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterPresenterTestCase.swift; sourceTree = "<group>"; };
 		37D24E41207153EC00783869 /* MVVMViewControllerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMViewControllerTestCase.swift; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				371F44E82048565400EDB6CC /* AppDelegate.swift */,
-				371F45162048599D00EDB6CC /* NSObjectProtocol.className.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -307,7 +304,6 @@
 				ED03FD852048FFA10084D73B /* MVPViewController.swift in Sources */,
 				371F44E92048565400EDB6CC /* AppDelegate.swift in Sources */,
 				371F45142048587500EDB6CC /* CounterViewModel.swift in Sources */,
-				371F45172048599D00EDB6CC /* NSObjectProtocol.className.swift in Sources */,
 				ED03FD882049002E0084D73B /* CounterPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

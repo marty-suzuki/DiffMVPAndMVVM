@@ -11,6 +11,10 @@ import XCTest
 
 // MARK: - Mock
 final class CounterPresenterMock: CounterPresenterType {
+    init(numberOfPlaceValues: Int, view: CounterView) {
+
+    }
+
     @objc func incrementButtonTap() {}
     @objc func upButtonTap() {}
     @objc func downButtonTap() {}
@@ -18,13 +22,12 @@ final class CounterPresenterMock: CounterPresenterType {
 
 // MARK: - TestCase
 final class MVPViewControllerTestCase: XCTestCase {
-    private var viewController: MVPViewController!
+    private var viewController: MVPViewController<CounterPresenterMock>!
 
     override func setUp() {
         super.setUp()
 
-        let presenter = CounterPresenterMock()
-        let viewController = MVPViewController(presenter: presenter)
+        let viewController = MVPViewController<CounterPresenterMock>()
         _ = viewController.view
         self.viewController = viewController
     }

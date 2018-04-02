@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class MVVMViewController: UIViewController {
+final class MVVMViewController<ViewModel: CounterViewModelType>: UIViewController {
     @IBOutlet private(set) var labels: [UILabel]! {
         didSet {
             labels.forEach { label in
@@ -22,24 +22,22 @@ final class MVVMViewController: UIViewController {
             }
         }
     }
-    @IBOutlet private weak var incrementButton: UIButton!
-    @IBOutlet private weak var upButton: UIButton!
-    @IBOutlet private weak var downButton: UIButton!
+    @IBOutlet private(set) weak var incrementButton: UIButton!
+    @IBOutlet private(set) weak var upButton: UIButton!
+    @IBOutlet private(set) weak var downButton: UIButton!
 
     private let disposeBag = DisposeBag()
-    private lazy var viewModel: CounterViewModelType = {
-        CounterViewModel(numberOfPlaceValues: self.labels.count,
-                         incrementButtonTap: self.incrementButton.rx.tap.asObservable(),
-                         upButtonTap: self.upButton.rx.tap.asObservable(),
-                         downButtonTap: self.downButton.rx.tap.asObservable())
+    private(set) lazy var viewModel: ViewModel = {
+        .init(numberOfPlaceValues: self.labels.count,
+              incrementButtonTap: self.incrementButton.rx.tap.asObservable(),
+              upButtonTap: self.upButton.rx.tap.asObservable(),
+              downButtonTap: self.downButton.rx.tap.asObservable())
     }()
 
-    init(viewModel: CounterViewModelType? = nil) {
-        super.init(nibName: MVVMViewController.className, bundle: nil)
-        
-        if let viewModel = viewModel {
-            self.viewModel = viewModel
-        }
+    init() {
+        let nibName = "MVVMViewController"
+        super.init(nibName: nibName, bundle: nil)
+        self.title = nibName
     }
 
     required init?(coder aDecoder: NSCoder) {

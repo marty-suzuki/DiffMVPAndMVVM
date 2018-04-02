@@ -13,27 +13,31 @@ import RxCocoa
 
 // MARK: - Mock
 final class CounterViewModelMock: CounterViewModelType {
-    let placeValues: Observable<[String]>
+    var placeValues: Observable<[String]> {
+        return _placeValues.asObservable()
+    }
+    let _placeValues = PublishRelay<[String]>()
 
-    init(placeValues: Observable<[String]>) {
-        self.placeValues = placeValues
+    init(numberOfPlaceValues: Int,
+         incrementButtonTap: Observable<Void>,
+         upButtonTap: Observable<Void>,
+         downButtonTap: Observable<Void>) {
+
     }
 }
 
 // MARK: - TestCase
 final class MVVMViewControllerTestCase: XCTestCase {
-    private var viewController: MVVMViewController!
+    private var viewController: MVVMViewController<CounterViewModelMock>!
     private var placeValues: PublishRelay<[String]>!
 
     override func setUp() {
         super.setUp()
 
-        let placeValues = PublishRelay<[String]>()
-        let viewModel = CounterViewModelMock(placeValues: placeValues.asObservable())
-        let viewController = MVVMViewController(viewModel: viewModel)
+        let viewController = MVVMViewController<CounterViewModelMock>()
         _ = viewController.view
-        self.placeValues = placeValues
         self.viewController = viewController
+        self.placeValues = viewController.viewModel._placeValues
     }
     
     func testNumberOfLabels() {
