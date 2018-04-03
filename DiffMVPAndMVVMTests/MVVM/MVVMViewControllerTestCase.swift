@@ -13,22 +13,47 @@ import RxCocoa
 
 // MARK: - Mock
 final class CounterViewModelMock: CounterViewModelType {
-    var placeValues: Observable<[String]> {
-        return _placeValues.asObservable()
-    }
+    let placeValues: Observable<[String]>
     let _placeValues = PublishRelay<[String]>()
+
+    let numberOfPlaceValues: Int
+    private(set) var incrementButtonTapCount: Int = 0
+    private(set) var upButtonTapCount: Int = 0
+    private(set) var downButtonTapCount: Int = 0
+
+    private let disposeBag = DisposeBag()
 
     init(numberOfPlaceValues: Int,
          incrementButtonTap: Observable<Void>,
          upButtonTap: Observable<Void>,
          downButtonTap: Observable<Void>) {
+        self.placeValues = _placeValues.asObservable()
+        self.numberOfPlaceValues = numberOfPlaceValues
 
+        incrementButtonTap
+            .subscribe(onNext: { [weak self] in
+                self?.incrementButtonTapCount += 1
+            })
+            .disposed(by: disposeBag)
+
+        upButtonTap
+            .subscribe(onNext: { [weak self] in
+                self?.upButtonTapCount += 1
+            })
+            .disposed(by: disposeBag)
+
+        downButtonTap
+            .subscribe(onNext: { [weak self] in
+                self?.downButtonTapCount += 1
+            })
+            .disposed(by: disposeBag)
     }
 }
 
 // MARK: - TestCase
 final class MVVMViewControllerTestCase: XCTestCase {
     private var viewController: MVVMViewController<CounterViewModelMock>!
+    private var viewModel: CounterViewModelMock!
     private var placeValues: PublishRelay<[String]>!
 
     override func setUp() {
@@ -37,6 +62,7 @@ final class MVVMViewControllerTestCase: XCTestCase {
         let viewController = MVVMViewController<CounterViewModelMock>()
         _ = viewController.view
         self.viewController = viewController
+        self.viewModel = viewController.viewModel
         self.placeValues = viewController.viewModel._placeValues
     }
     
@@ -74,5 +100,27 @@ final class MVVMViewControllerTestCase: XCTestCase {
         XCTAssertNotEqual(viewController.labels[index].text, "4")
         placeValues.accept(["0", "0", "0", "4"])
         XCTAssertEqual(viewController.labels[index].text, "4")
+    }
+
+    func testNumberOfPlaceValues() {
+        XCTAssertEqual(viewController.labels.count, viewModel.numberOfPlaceValues)
+    }
+
+    func testIncrementButtonTap() {
+        XCTAssertEqual(viewModel.incrementButtonTapCount, 0)
+        viewController.incrementButton.sendActions(for: .touchUpInside)
+        XCTAssertEqual(viewModel.incrementButtonTapCount, 1)
+    }
+
+    func testUpButtonTap() {
+        XCTAssertEqual(viewModel.upButtonTapCount, 0)
+        viewController.upButton.sendActions(for: .touchUpInside)
+        XCTAssertEqual(viewModel.upButtonTapCount, 1)
+    }
+
+    func testDownButtonTapTap() {
+        XCTAssertEqual(viewModel.downButtonTapCount, 0)
+        viewController.downButton.sendActions(for: .touchUpInside)
+        XCTAssertEqual(viewModel.downButtonTapCount, 1)
     }
 }

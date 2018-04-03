@@ -11,18 +11,34 @@ import XCTest
 
 // MARK: - Mock
 final class CounterPresenterMock: CounterPresenterType {
-    init(numberOfPlaceValues: Int, view: CounterView) {
+    let numberOfPlaceValues: Int
+    private(set) weak var view: CounterView?
+    private(set) var incrementButtonTapCount: Int = 0
+    private(set) var upButtonTapCount: Int = 0
+    private(set) var downButtonTapCount: Int = 0
 
+    init(numberOfPlaceValues: Int, view: CounterView) {
+        self.numberOfPlaceValues = numberOfPlaceValues
+        self.view = view
     }
 
-    @objc func incrementButtonTap() {}
-    @objc func upButtonTap() {}
-    @objc func downButtonTap() {}
+    @objc func incrementButtonTap() {
+        incrementButtonTapCount += 1
+    }
+
+    @objc func upButtonTap() {
+        upButtonTapCount += 1
+    }
+
+    @objc func downButtonTap() {
+        downButtonTapCount += 1
+    }
 }
 
 // MARK: - TestCase
 final class MVPViewControllerTestCase: XCTestCase {
     private var viewController: MVPViewController<CounterPresenterMock>!
+    private var presenter: CounterPresenterMock!
 
     override func setUp() {
         super.setUp()
@@ -30,6 +46,15 @@ final class MVPViewControllerTestCase: XCTestCase {
         let viewController = MVPViewController<CounterPresenterMock>()
         _ = viewController.view
         self.viewController = viewController
+        self.presenter = viewController.presenter
+    }
+
+    func testViewIsSameAsViewController() {
+        if let view = viewController.presenter.view as? UIViewController {
+            XCTAssertEqual(view, viewController)
+        } else {
+            XCTFail()
+        }
     }
 
     func testNumberOfLabels() {
@@ -66,5 +91,27 @@ final class MVPViewControllerTestCase: XCTestCase {
         XCTAssertNotEqual(viewController.labels[index].text, "4")
         viewController.updateLabel(at: index, text: "4")
         XCTAssertEqual(viewController.labels[index].text, "4")
+    }
+
+    func testNumberOfPlaceValues() {
+        XCTAssertEqual(viewController.labels.count, presenter.numberOfPlaceValues)
+    }
+
+    func testIncrementButtonTap() {
+        XCTAssertEqual(presenter.incrementButtonTapCount, 0)
+        viewController.incrementButton.sendActions(for: .touchUpInside)
+        XCTAssertEqual(presenter.incrementButtonTapCount, 1)
+    }
+
+    func testUpButtonTap() {
+        XCTAssertEqual(presenter.upButtonTapCount, 0)
+        viewController.upButton.sendActions(for: .touchUpInside)
+        XCTAssertEqual(presenter.upButtonTapCount, 1)
+    }
+
+    func testDownButtonTapTap() {
+        XCTAssertEqual(presenter.downButtonTapCount, 0)
+        viewController.downButton.sendActions(for: .touchUpInside)
+        XCTAssertEqual(presenter.downButtonTapCount, 1)
     }
 }
