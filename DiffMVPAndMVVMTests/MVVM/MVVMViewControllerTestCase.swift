@@ -23,11 +23,10 @@ final class CounterViewModelMock: CounterViewModelType {
 
     private let disposeBag = DisposeBag()
 
-    init<Model: CounterModelType>(numberOfDigits: Int,
-                                  incrementButtonTap: Observable<Void>,
-                                  upButtonTap: Observable<Void>,
-                                  downButtonTap: Observable<Void>,
-                                  type: Model.Type) {
+    init(numberOfDigits: Int,
+         incrementButtonTap: Observable<Void>,
+         upButtonTap: Observable<Void>,
+         downButtonTap: Observable<Void>) {
         self.placeValues = _placeValues.asObservable()
         self.numberOfDigits = numberOfDigits
 

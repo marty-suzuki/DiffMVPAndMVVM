@@ -8,17 +8,7 @@
 
 import Foundation
 
-protocol CounterModelType: class {
-    var count: Int { get }
-    var maxValue: Int { get }
-    init(numberOfDigits: Int, changed: @escaping (Int) -> ())
-    func array(from count: Int,  numberOfDigits: Int) -> [Int]
-    func increment()
-    func incrementAllIfNeeded()
-    func decrementAllIfNeeded()
-}
-
-final class CounterModel: CounterModelType {
+final class CounterModel {
     private(set) var count: Int = 0 {
         didSet { changed(count) }
     }

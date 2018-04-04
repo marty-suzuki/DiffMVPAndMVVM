@@ -31,8 +31,7 @@ final class MVVMViewController<ViewModel: CounterViewModelType>: UIViewControlle
         .init(numberOfDigits: self.labels.count,
               incrementButtonTap: self.incrementButton.rx.tap.asObservable(),
               upButtonTap: self.upButton.rx.tap.asObservable(),
-              downButtonTap: self.downButton.rx.tap.asObservable(),
-              type: CounterModel.self)
+              downButtonTap: self.downButton.rx.tap.asObservable())
     }()
 
     init() {

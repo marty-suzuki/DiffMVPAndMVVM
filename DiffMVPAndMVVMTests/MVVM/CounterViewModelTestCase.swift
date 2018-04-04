@@ -30,8 +30,7 @@ final class CounterViewModelTestCase: XCTestCase {
         self.viewModel = CounterViewModel(numberOfDigits: 4,
                                           incrementButtonTap: incrementButtonTap.asObservable(),
                                           upButtonTap: upButtonTap.asObservable(),
-                                          downButtonTap: downButtonTap.asObservable(),
-                                          type: CounterModel.self)
+                                          downButtonTap: downButtonTap.asObservable())
         self.incrementButtonTap = incrementButtonTap
         self.upButtonTap = upButtonTap
         self.downButtonTap = downButtonTap

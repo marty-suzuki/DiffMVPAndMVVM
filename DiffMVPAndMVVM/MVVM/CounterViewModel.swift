@@ -11,27 +11,25 @@ import RxCocoa
 
 protocol CounterViewModelType: class {
     var placeValues: Observable<[String]> { get }
-    init<Model: CounterModelType>(numberOfDigits: Int,
-                                  incrementButtonTap: Observable<Void>,
-                                  upButtonTap: Observable<Void>,
-                                  downButtonTap: Observable<Void>,
-                                  type: Model.Type)
+    init(numberOfDigits: Int,
+         incrementButtonTap: Observable<Void>,
+         upButtonTap: Observable<Void>,
+         downButtonTap: Observable<Void>)
 }
 
 final class CounterViewModel: CounterViewModelType {
     let placeValues: Observable<[String]>
 
-    private let model: CounterModelType
+    private let model: CounterModel
     private let disposeBag = DisposeBag()
 
-    init<Model: CounterModelType>(numberOfDigits: Int,
-                                  incrementButtonTap: Observable<Void>,
-                                  upButtonTap: Observable<Void>,
-                                  downButtonTap: Observable<Void>,
-                                  type: Model.Type) {
+    init(numberOfDigits: Int,
+         incrementButtonTap: Observable<Void>,
+         upButtonTap: Observable<Void>,
+         downButtonTap: Observable<Void>) {
         let _count = BehaviorRelay<Int>(value: 0)
-        self.model = Model(numberOfDigits: numberOfDigits,
-                           changed: { _count.accept($0) })
+        self.model = CounterModel(numberOfDigits: numberOfDigits,
+                                  changed: { _count.accept($0) })
 
         self.placeValues = _count
             .flatMap { [weak model] count -> Observable<[String]> in
