@@ -103,11 +103,13 @@ final class CounterViewModel: CounterViewModelType {
                 .disposed(by: disposeBag)
 
             let placeValues = (0..<numberOfPlaceValues).map { _ in 0 }
-            let maxValue = (Int(pow(Double(10), Double(placeValues.count + 1))) - 1)
+            let maxValue = (Int(pow(10, Double(placeValues.count))) - 1)
             incrementButtonTap
                 .withLatestFrom(_count)
-                .map { $0 + 1 }
-                .filter { $0 <= maxValue }
+                .map {
+                    let newValue = $0 + 1
+                    return newValue > maxValue ? 0 : newValue
+                }
                 .bind(to: _count)
                 .disposed(by: disposeBag)
 
