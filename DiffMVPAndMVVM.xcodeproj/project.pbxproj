@@ -21,6 +21,7 @@
 		37D24E44207153FE00783869 /* CounterViewModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D24E43207153FE00783869 /* CounterViewModelTestCase.swift */; };
 		37D24E452071546D00783869 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371F45092048568000EDB6CC /* RxCocoa.framework */; };
 		37D24E462071546D00783869 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371F450A2048568000EDB6CC /* RxSwift.framework */; };
+		37F23C0A2075335A005FE672 /* CounterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F23C092075335A005FE672 /* CounterModel.swift */; };
 		ED03FD852048FFA10084D73B /* MVPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED03FD832048FFA10084D73B /* MVPViewController.swift */; };
 		ED03FD862048FFA10084D73B /* MVPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED03FD842048FFA10084D73B /* MVPViewController.xib */; };
 		ED03FD882049002E0084D73B /* CounterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED03FD872049002E0084D73B /* CounterPresenter.swift */; };
@@ -53,6 +54,7 @@
 		37D24E3F20714CAF00783869 /* CounterPresenterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterPresenterTestCase.swift; sourceTree = "<group>"; };
 		37D24E41207153EC00783869 /* MVVMViewControllerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMViewControllerTestCase.swift; sourceTree = "<group>"; };
 		37D24E43207153FE00783869 /* CounterViewModelTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewModelTestCase.swift; sourceTree = "<group>"; };
+		37F23C092075335A005FE672 /* CounterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterModel.swift; sourceTree = "<group>"; };
 		ED03FD832048FFA10084D73B /* MVPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPViewController.swift; sourceTree = "<group>"; };
 		ED03FD842048FFA10084D73B /* MVPViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MVPViewController.xib; sourceTree = "<group>"; };
 		ED03FD872049002E0084D73B /* CounterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterPresenter.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				371F44E82048565400EDB6CC /* AppDelegate.swift */,
+				37F23C092075335A005FE672 /* CounterModel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			files = (
 				371F4511204857C000EDB6CC /* MVVMViewController.swift in Sources */,
 				ED03FD852048FFA10084D73B /* MVPViewController.swift in Sources */,
+				37F23C0A2075335A005FE672 /* CounterModel.swift in Sources */,
 				371F44E92048565400EDB6CC /* AppDelegate.swift in Sources */,
 				371F45142048587500EDB6CC /* CounterViewModel.swift in Sources */,
 				ED03FD882049002E0084D73B /* CounterPresenter.swift in Sources */,

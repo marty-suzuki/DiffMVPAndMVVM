@@ -27,10 +27,11 @@ final class CounterViewModelTestCase: XCTestCase {
         let incrementButtonTap = PublishRelay<Void>()
         let upButtonTap = PublishRelay<Void>()
         let downButtonTap = PublishRelay<Void>()
-        self.viewModel = CounterViewModel(numberOfPlaceValues: 4,
+        self.viewModel = CounterViewModel(numberOfDigits: 4,
                                           incrementButtonTap: incrementButtonTap.asObservable(),
                                           upButtonTap: upButtonTap.asObservable(),
-                                          downButtonTap: downButtonTap.asObservable())
+                                          downButtonTap: downButtonTap.asObservable(),
+                                          type: CounterModel.self)
         self.incrementButtonTap = incrementButtonTap
         self.upButtonTap = upButtonTap
         self.downButtonTap = downButtonTap

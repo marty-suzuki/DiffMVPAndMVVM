@@ -40,7 +40,7 @@ final class CounterPresenterTestCase: XCTestCase {
         let counterView = CounterViewMock() { [weak self] result in
             self?.results.append(result)
         }
-        self.presetner = CounterPresenter(numberOfPlaceValues: 4, view: counterView)
+        self.presetner = CounterPresenter(numberOfDigits: 4, view: counterView)
         self.counterView = counterView
     }
 

@@ -16,19 +16,20 @@ final class CounterViewModelMock: CounterViewModelType {
     let placeValues: Observable<[String]>
     let _placeValues = PublishRelay<[String]>()
 
-    let numberOfPlaceValues: Int
+    let numberOfDigits: Int
     private(set) var incrementButtonTapCount: Int = 0
     private(set) var upButtonTapCount: Int = 0
     private(set) var downButtonTapCount: Int = 0
 
     private let disposeBag = DisposeBag()
 
-    init(numberOfPlaceValues: Int,
-         incrementButtonTap: Observable<Void>,
-         upButtonTap: Observable<Void>,
-         downButtonTap: Observable<Void>) {
+    init<Model: CounterModelType>(numberOfDigits: Int,
+                                  incrementButtonTap: Observable<Void>,
+                                  upButtonTap: Observable<Void>,
+                                  downButtonTap: Observable<Void>,
+                                  type: Model.Type) {
         self.placeValues = _placeValues.asObservable()
-        self.numberOfPlaceValues = numberOfPlaceValues
+        self.numberOfDigits = numberOfDigits
 
         incrementButtonTap
             .subscribe(onNext: { [weak self] in
@@ -103,7 +104,7 @@ final class MVVMViewControllerTestCase: XCTestCase {
     }
 
     func testNumberOfPlaceValues() {
-        XCTAssertEqual(viewController.labels.count, viewModel.numberOfPlaceValues)
+        XCTAssertEqual(viewController.labels.count, viewModel.numberOfDigits)
     }
 
     func testIncrementButtonTap() {

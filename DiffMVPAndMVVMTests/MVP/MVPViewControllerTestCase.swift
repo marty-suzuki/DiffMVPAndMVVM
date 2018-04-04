@@ -11,14 +11,14 @@ import XCTest
 
 // MARK: - Mock
 final class CounterPresenterMock: CounterPresenterType {
-    let numberOfPlaceValues: Int
+    let numberOfDigits: Int
     private(set) weak var view: CounterView?
     private(set) var incrementButtonTapCount: Int = 0
     private(set) var upButtonTapCount: Int = 0
     private(set) var downButtonTapCount: Int = 0
 
-    init(numberOfPlaceValues: Int, view: CounterView) {
-        self.numberOfPlaceValues = numberOfPlaceValues
+    init(numberOfDigits: Int, view: CounterView) {
+        self.numberOfDigits = numberOfDigits
         self.view = view
     }
 
@@ -94,7 +94,7 @@ final class MVPViewControllerTestCase: XCTestCase {
     }
 
     func testNumberOfPlaceValues() {
-        XCTAssertEqual(viewController.labels.count, presenter.numberOfPlaceValues)
+        XCTAssertEqual(viewController.labels.count, presenter.numberOfDigits)
     }
 
     func testIncrementButtonTap() {

@@ -28,10 +28,11 @@ final class MVVMViewController<ViewModel: CounterViewModelType>: UIViewControlle
 
     private let disposeBag = DisposeBag()
     private(set) lazy var viewModel: ViewModel = {
-        .init(numberOfPlaceValues: self.labels.count,
+        .init(numberOfDigits: self.labels.count,
               incrementButtonTap: self.incrementButton.rx.tap.asObservable(),
               upButtonTap: self.upButton.rx.tap.asObservable(),
-              downButtonTap: self.downButton.rx.tap.asObservable())
+              downButtonTap: self.downButton.rx.tap.asObservable(),
+              type: CounterModel.self)
     }()
 
     init() {

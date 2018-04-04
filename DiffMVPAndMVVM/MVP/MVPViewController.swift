@@ -28,7 +28,7 @@ final class MVPViewController<Presenter: CounterPresenterType>: UIViewController
     @IBOutlet private(set) weak var upButton: UIButton!
     @IBOutlet private(set) weak var downButton: UIButton!
 
-    private(set) lazy var presenter = Presenter(numberOfPlaceValues: self.labels.count, view: self)
+    private(set) lazy var presenter = Presenter(numberOfDigits: self.labels.count, view: self)
 
     init() {
         let nibName = "MVPViewController"
