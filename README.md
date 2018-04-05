@@ -1,5 +1,7 @@
 # DiffMVPAndMVVM
 
+![](./Images/tally_counter.gif)
+
 ## Requirements
 
 - Xcode 9.3
