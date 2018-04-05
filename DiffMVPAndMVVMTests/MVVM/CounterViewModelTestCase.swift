@@ -63,4 +63,35 @@ final class CounterViewModelTestCase: XCTestCase {
         XCTAssertEqual(results.value[2], "0")
         XCTAssertEqual(results.value[3], "0")
     }
+
+    func testUpButtonTap() {
+        let lastValue = results.value
+        XCTAssertEqual(lastValue.count, 4)
+        upButtonTap.accept(())
+
+        XCTAssertNotEqual(lastValue, results.value)
+        XCTAssertEqual(results.value.count, 4)
+        XCTAssertEqual(results.value[0], "1")
+        XCTAssertEqual(results.value[1], "1")
+        XCTAssertEqual(results.value[2], "1")
+        XCTAssertEqual(results.value[3], "1")
+    }
+
+    func testDownButtonTap() {
+        (1...211).forEach { _ in incrementButtonTap.accept(()) }
+        let lastValue = results.value
+        XCTAssertEqual(lastValue.count, 4)
+        XCTAssertEqual(lastValue[0], "1")
+        XCTAssertEqual(lastValue[1], "1")
+        XCTAssertEqual(lastValue[2], "2")
+        XCTAssertEqual(lastValue[3], "0")
+        downButtonTap.accept(())
+
+        XCTAssertNotEqual(lastValue, results.value)
+        XCTAssertEqual(results.value.count, 4)
+        XCTAssertEqual(results.value[0], "1")
+        XCTAssertEqual(results.value[1], "1")
+        XCTAssertEqual(results.value[2], "1")
+        XCTAssertEqual(results.value[3], "0")
+    }
 }
